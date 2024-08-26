@@ -19,5 +19,27 @@ public class Account {
         this.transactions = new ArrayList<>();
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public List<Transaction> getTransactions() {
+        return new ArrayList<>(transactions);
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+    }
 }
