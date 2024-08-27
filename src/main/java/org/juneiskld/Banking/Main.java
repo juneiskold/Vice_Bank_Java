@@ -65,9 +65,11 @@ public class Main {
                     viewTransactions(scanner, bank);
                     break;
                 case 7:
-
+                    setIncome(scanner, bank);
+                    break;
                 case 8:
-
+                    addExpense(scanner, bank);
+                    break;
                 case 9:
                     budget.displayBudget();
                     break;
