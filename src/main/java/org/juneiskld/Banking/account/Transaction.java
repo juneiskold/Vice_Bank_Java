@@ -20,8 +20,8 @@ public class Transaction {
             throw new IllegalArgumentException("Description cannot be null or empty");
         }
 
-        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("Amount must be greater than zero");
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Amount must be non-negative");
         }
 
         if (currency == null) {
