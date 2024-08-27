@@ -29,4 +29,15 @@ public enum AccountType implements AccountInterestRateCalculator {
     public String toString() {
         return name().toLowerCase();
     }
+
+    // example implementation of account interest rate calculator method
+    @Override
+    public BigDecimal calculateInterest(BigDecimal balance) {
+        if (balance == null || balance.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Balance cannot be null or negative.");
+        }
+        return balance.multiply(BigDecimal.valueOf(interestRate));
+    }
+
+
 }
