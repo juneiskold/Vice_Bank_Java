@@ -36,6 +36,10 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return String.format("%s: %s - R%.2f", timestamp, description, amount);
+        return String.format(Locale.getDefault(),"%s: %s - %,.2f %s",
+                             timestamp,
+                             description,
+                             amount,
+                             currency.getCurrencyCode());
     }
 }
