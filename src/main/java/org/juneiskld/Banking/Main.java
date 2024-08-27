@@ -5,6 +5,7 @@ import org.juneiskld.Banking.account.Transaction;
 import org.juneiskld.Banking.bank.Bank;
 import org.juneiskld.Banking.budget.Budget;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -71,7 +72,7 @@ public class Main {
                     double balance = bank.getBalance(balanceAccNum);
 
                     if (balance >= 0) {
-                        System.out.printf("Balance: R%.2f%n", balance);
+                        System.out.printf("Balance: R%s\n", formatNumber(balance));
 
                     } else {
                         System.out.println("Account not found");
@@ -139,5 +140,11 @@ public class Main {
                     System.out.println("Invalid option. Please try again.");
             }
         }
+    }
+
+    private static String formatNumber(double number) {
+
+        DecimalFormat df = new DecimalFormat("#, ##0.00");
+        return df.format(number).replace(",", " ");
     }
 }
