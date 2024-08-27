@@ -47,7 +47,8 @@ public class Main {
 
             switch (choice) {
                 case 1:
-
+                    createAccount(scanner, bank);
+                    break;
                 case 2:
                     System.out.print("Enter account number: ");
                     String depositAccNum = scanner.nextLine();
