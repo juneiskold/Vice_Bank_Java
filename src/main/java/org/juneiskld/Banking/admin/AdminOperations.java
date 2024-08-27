@@ -30,11 +30,11 @@ public class AdminOperations {
 
             switch (choice) {
                 case 1:
-                    viewAllAccountNumbers(bank);
+                    ViewAccountsOperation.execute(bank);
                     break;
 
                 case 2:
-                    deleteAccount(scanner, bank);
+                    DeleteAccountOperation.execute(scanner, bank);
                     break;
 
                 case 0:
