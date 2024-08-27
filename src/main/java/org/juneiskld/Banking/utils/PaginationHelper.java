@@ -14,5 +14,13 @@ public class PaginationHelper<T> {
         this.currentPage = 1;
     }
 
+    public int getTotalPages() {
+        return (int) Math.ceil((double) items.size() / pageSize);
+    }
+
+    public int getPageStart() {
+        return (currentPage - 1) * pageSize;
+    }
+
 
 }
