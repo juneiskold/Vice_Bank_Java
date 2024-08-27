@@ -3,11 +3,19 @@ package org.juneiskld.Banking.budget;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.math.BigDecimal;
+import java.util.Optional;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Budget {
 
-    private double income;
+    public static final Logger logger = Logger.getLogger(Budget.class.getName());
 
-    private Map<String, Double> expenses;
+    private BigDecimal income;
+
+    private final Map<String, Double> expenses;
 
     public Budget() {
 
