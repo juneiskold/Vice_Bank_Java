@@ -38,6 +38,4 @@ public enum AccountType implements AccountInterestRateCalculator {
         }
         return balance.multiply(BigDecimal.valueOf(interestRate));
     }
-
-
 }

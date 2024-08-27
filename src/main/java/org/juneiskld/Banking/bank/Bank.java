@@ -12,12 +12,25 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 public class Bank {
 
+    private static final Logger logger = LoggerFactory.getLogger(Bank.class);
+    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private final AtomicLong nextAccounID = new AtomicLong(1);
     private Map<String, Account> accounts;
 
     public Bank() {
         this.accounts = new HashMap<>();
+    }
+
+    private long generateNextAccountID() {
+        return nextAccounID.incrementAndGet();
     }
 
     public Account createAccount(String ownerName, double initialBalance) {
