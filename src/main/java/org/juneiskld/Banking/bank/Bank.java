@@ -38,68 +38,124 @@ public class Bank {
     }
 
     public Account createAccount(String ownerName, double initialBalance) {
+        lock.writeLock().lock();
+        try {
+            long accountID  = generateNextAccountID();
+            String accountNumber = generateAccountNumber(accountID);
+            Account newAccount = new Account(accountNumber, ownerName, initialBalance);
+            accounts.put(accountID, newAccount);
+            logger.info("Created new account {}", accountNumber);
+            return newAccount;
 
-        String accountNumber = generateAccountNumber();
-        Account newAccount = new Account(accountNumber, ownerName, initialBalance);
-        accounts.put(accountNumber, newAccount);
-        return newAccount;
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 
-    public Account getAccount(String accountNumber) {
+    public Account getAccount(Long accountNumber) {
+
+        // no need for separate locking here if already handled in calling method
         return accounts.get(accountNumber);
     }
 
-    private String generateAccountNumber() {
-        return String.format("%010d", accounts.size() + 1);
-    }
+    public void deposit(Long accountNumber, double amount) {
+        lock.writeLock().lock(); // upgrade to write lock as balance is being modified
 
-    public void deposit(String accountNumber, double amount) {
-        Account account = getAccount(accountNumber);
+        try {
+            Account account = getAccount(accountNumber);
 
-        if (account != null) {
-            DepositOperation.execute(account, amount);
+            if (account != null) {
+                DepositOperation.execute(account, amount);
+                logger.info("Deposited {} into account {}", amount, account.getAccountNumber());
+
+            } else {
+                logger.warn("Attempted deposit into non-existent account: {}", accountNumber);
+
+            }
+        } finally {
+            lock.writeLock().unlock();
         }
     }
 
-    public boolean withdraw(String accountNumber, double amount) {
-        Account account = getAccount(accountNumber);
+    public boolean withdraw(Long accountNumber, double amount) {
+        lock.writeLock().lock(); // upgrade to write lock for modifying balance
 
-        if (account != null) {
-            return WithdrawOperation.execute(account, amount);
+        try {
+            Account account = accounts.get(accountNumber);
+
+            if (account != null) {
+                return WithdrawOperation.execute(account, amount);
+            }
+            logger.warn("Attempted withdrawal into non-existent account: {}", accountNumber);
+            return false;
+
+        } finally {
+            lock.writeLock().unlock();
         }
-        return false;
+
     }
 
-    public boolean transfer(String senderAccountNumber, String recipientAccountNumber, double amount) {
-        Account sender = getAccount(senderAccountNumber);
-        Account recipient = getAccount(recipientAccountNumber);
+    public boolean transfer(Long senderAccountNumber, Long recipientAccountNumber, double amount) {
+        lock.writeLock().lock(); // upgrade to writ lock for modifying balances
 
-        if (sender != null && recipient != null) {
-            return TransferOperation.execute(sender, recipient, amount);
+        try {
+            Account sender = accounts.get(senderAccountNumber);
+            Account recipient = accounts.get(recipientAccountNumber);
+
+            if (sender != null && recipient != null) {
+                return TransferOperation.execute(sender, recipient, amount);
+            }
+            logger.warn("One or both accounts do not exist for transfer: {}, {}", senderAccountNumber, recipientAccountNumber);
+            return false;
+
+        } finally {
+            lock.writeLock().unlock();
         }
-        return false;
     }
 
-    public double getBalance(String accountNumber) {
-        Account account = getAccount(accountNumber);
+    public double getBalance(Long accountNumber) {
+        lock.readLock().lock();
 
-        if (account != null) {
-            return BalanceOperation.execute(account);
+        try {
+            Account account = accounts.get(accountNumber);
+
+            if (account != null) {
+                return BalanceOperation.execute(account);
+            }
+            logger.warn("Attempted balance inquiry for non-existent account: {}", accountNumber);
+            return -1;
+
+        } finally {
+            lock.readLock().unlock();
         }
-        return -1;
+
     }
 
-    public List<String> getAllAccountNumbers() {
+    public List<Long> getAllAccountNumbers() {
+        lock.readLock().lock();
 
-        return new ArrayList<>(accounts.keySet());
+        try {
+            return new ArrayList<>(accounts.keySet());
+        } finally {
+            lock.readLock().unlock();
+        }
     }
 
-    public boolean deleteAccount(String accountNumber) {
+    public boolean deleteAccount(Long accountNumber) {
+        lock.writeLock().lock();
 
-        if (accounts.containsKey(accountNumber)) {
-            accounts.remove(accountNumber);
-            return true;
+        try {
+            if (accounts.containsKey(accountNumber)) {
+                accounts.remove(accountNumber);
+                logger.info("Deleted account {}", accountNumber);
+                return true;
 
-        } return false;
+            }
+            logger.warn("Attempted deletion of non-existent account: {}", accountNumber);
+            return false;
+
+        } finally {
+            lock.writeLock().unlock();
+        }
     }
 }
