@@ -13,6 +13,11 @@ public class Account {
     private List<Transaction> transactions;
 
     public Account(String accountNumber, String ownerName, double initialBalance) {
+
+        if (initialBalance <= 0) {
+            throw new IllegalArgumentException("Initial balance must be positive");
+        }
+
         this.accountNumber = accountNumber;
         this.ownerName = ownerName;
         this.balance = initialBalance;
