@@ -20,6 +20,10 @@ public class Account {
             throw new IllegalArgumentException("Account number cannot be null or empty");
         }
 
+        if (ownerName == null || ownerName.isEmpty()) {
+            throw new IllegalArgumentException("Owner name cannot be null or empty");
+        }
+
         if (initialBalance <= 0) {
             throw new IllegalArgumentException("Initial balance must be positive");
         }
