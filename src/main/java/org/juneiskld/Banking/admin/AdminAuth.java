@@ -4,12 +4,10 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class AdminAuth {
 
-    private static final String HASHED_ADMIN_PASSWORD = "$2a$12$ZzKvTqyRtQxwWpBnFgYkYeOoJrGmLXhPbVlMqUuqzHcSfDlqzIiE";
+    private static final String STORED_HASHED_PASSWORD = getHashedAdminPassword();
 
-    public static boolean authenticate(String password) throws NoSuchAlgorithmException {
-
-        String hashedPassword = hashPassword(password);
-        return HASHED_ADMIN_PASSWORD.equals(hashedPassword);
+    public static boolean authenticate(String password) {
+        return BCrypt.checkpw(password, STORED_HASHED_PASSWORD);
     }
 
     private static String hashPassword(String password)  throws NoSuchAlgorithmException {
