@@ -7,12 +7,12 @@ import java.util.Locale;
 
 public class Transaction {
 
-    private LocalDateTime timestamp;
+    private final LocalDateTime timestamp;
 
-    private String description;
+    private final String description;
 
-    private BigDecimal amount;
-    private Currency currency;
+    private final BigDecimal amount;
+    private final Currency currency;
 
     public Transaction(String description, BigDecimal amount, Currency currency) {
 
