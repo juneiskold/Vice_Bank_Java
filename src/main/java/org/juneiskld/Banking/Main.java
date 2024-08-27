@@ -4,6 +4,7 @@ import org.juneiskld.Banking.account.Account;
 import org.juneiskld.Banking.account.Transaction;
 import org.juneiskld.Banking.bank.Bank;
 import org.juneiskld.Banking.budget.Budget;
+import org.juneiskld.Banking.admin.AdminOperations;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
@@ -27,6 +28,7 @@ public class Main {
             System.out.println("7. Set Income");
             System.out.println("8. Add Expense");
             System.out.println("9. View Budget");
+            System.out.println("10. Admin Operations");
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");
 
@@ -130,6 +132,10 @@ public class Main {
 
                 case 9:
                     budget.displayBudget();
+                    break;
+
+                case 10:
+                    AdminOperations.performAdminOperations(scanner, bank);
                     break;
 
                 case 0:
