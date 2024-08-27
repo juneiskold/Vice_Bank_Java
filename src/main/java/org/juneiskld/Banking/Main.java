@@ -59,7 +59,8 @@ public class Main {
                     checkBalance(scanner, bank);
                     break;
                 case 5:
-
+                    transferMoney(scanner, bank);
+                    break;
                 case 6:
                     System.out.print("Enter account number: ");
                     String transactionAccNum = scanner.nextLine();
