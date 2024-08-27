@@ -46,13 +46,16 @@ public class Account {
         return balance;
     }
 
-
     public List<Transaction> getTransactions() {
 //        return new ArrayList<>(transactions);
-        return transactions;
+        return Collections.unmodifiableList(transactions);
     }
 
     public void addTransaction(Transaction transaction) {
+
+        if (transaction == null) {
+            throw new IllegalArgumentException("Transaction cannot be null");
+        }
         transactions.add(transaction);
     }
 }
