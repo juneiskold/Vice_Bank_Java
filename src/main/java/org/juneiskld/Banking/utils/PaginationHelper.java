@@ -22,5 +22,17 @@ public class PaginationHelper<T> {
         return (currentPage - 1) * pageSize;
     }
 
+    public int getPageEnd() {
+        return Math.min(currentPage * pageSize, items.size());
+    }
 
+    public void setPage(int page) {
+        if (page >= 1 && page <= getTotalPages()) {
+            this.currentPage = page;
+        }
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
 }
