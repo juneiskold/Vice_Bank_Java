@@ -42,4 +42,21 @@ public class Transaction {
                              amount,
                              currency.getCurrencyCode());
     }
+
+    // getters
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
 }
