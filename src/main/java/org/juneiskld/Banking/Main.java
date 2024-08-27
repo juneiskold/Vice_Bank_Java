@@ -53,7 +53,8 @@ public class Main {
                     deposit(scanner, bank);
                     break;
                 case 3:
-
+                    withdraw(scanner, bank);
+                    break;
                 case 4:
                     System.out.print("Enter account number: ");
                     String balanceAccNum = scanner.nextLine();
