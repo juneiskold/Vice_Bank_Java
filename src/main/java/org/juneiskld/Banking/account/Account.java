@@ -56,6 +56,12 @@ public class Account {
         if (transaction == null) {
             throw new IllegalArgumentException("Transaction cannot be null");
         }
+
         transactions.add(transaction);
+        updateBalance(transaction);
+    }
+
+    private void updateBalance(Transaction transaction) {
+        this.balance = balance.add(transaction.getAmount());
     }
 }
