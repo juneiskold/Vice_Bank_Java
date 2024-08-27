@@ -1,4 +1,5 @@
 package org.juneiskld.Banking.bank_account;
 
-public class Currency {
+public enum Currency {
+    USD, ZAR, EUR, GBP, INR, JPY
 }
