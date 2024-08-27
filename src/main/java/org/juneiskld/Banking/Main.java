@@ -50,21 +50,9 @@ public class Main {
                     createAccount(scanner, bank);
                     break;
                 case 2:
-
-
-                case 3:
-                    System.out.print("Enter account number: ");
-                    String withdrawAccNum = scanner.nextLine();
-                    System.out.print("Enter amount to withdraw: ");
-                    double withdrawAmount = scanner.nextDouble();
-
-                    if (bank.withdraw(withdrawAccNum, withdrawAmount)) {
-                        System.out.println("Withdraw successful.");
-
-                    } else {
-                        System.out.println("Withdraw failed. Insufficient funds.");
-                    }
+                    deposit(scanner, bank);
                     break;
+                case 3:
 
                 case 4:
                     System.out.print("Enter account number: ");
