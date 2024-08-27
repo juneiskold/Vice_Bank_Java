@@ -14,7 +14,7 @@ public class Account {
 
     private final List<Transaction> transactions;
 
-    public Account(String accountNumber, String ownerName, double initialBalance) {
+    public Account(String accountNumber, String ownerName, BigDecimal initialBalance) {
 
         if (initialBalance <= 0) {
             throw new IllegalArgumentException("Initial balance must be positive");
