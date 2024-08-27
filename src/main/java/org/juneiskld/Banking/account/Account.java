@@ -28,10 +28,6 @@ public class Account {
             throw new IllegalArgumentException("Initial balance must be a positive");
         }
 
-        if (initialBalance <= 0) {
-            throw new IllegalArgumentException("Initial balance must be positive");
-        }
-
         this.accountNumber = accountNumber;
         this.ownerName = ownerName;
         this.balance = initialBalance;
@@ -46,13 +42,10 @@ public class Account {
         return ownerName;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 
     public List<Transaction> getTransactions() {
 //        return new ArrayList<>(transactions);
