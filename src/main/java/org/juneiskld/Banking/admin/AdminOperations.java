@@ -44,8 +44,4 @@ public class AdminOperations {
             }
         }
     }
-
-    private static void viewAllAccountNumbers(Bank bank) {
-
-    }
 }
