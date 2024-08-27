@@ -1,6 +1,9 @@
 package org.juneiskld.Banking.account;
 
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.Locale;
 
 public class Transaction {
 
@@ -8,7 +11,8 @@ public class Transaction {
 
     private String description;
 
-    private double amount;
+    private BigDecimal amount;
+    private Currency currency;
 
     public Transaction(String description, double amount) {
 
