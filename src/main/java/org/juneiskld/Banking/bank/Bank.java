@@ -33,6 +33,10 @@ public class Bank {
         return nextAccounID.incrementAndGet();
     }
 
+    private String generateAccountNumber(long accountID) {
+        return String.format("%010d", accountID);
+    }
+
     public Account createAccount(String ownerName, double initialBalance) {
 
         String accountNumber = generateAccountNumber();
