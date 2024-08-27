@@ -16,6 +16,10 @@ public class Account {
 
     public Account(String accountNumber, String ownerName, BigDecimal initialBalance) {
 
+        if (accountNumber == null || accountNumber.isEmpty()) {
+            throw new IllegalArgumentException("Account number cannot be null or empty");
+        }
+
         if (initialBalance <= 0) {
             throw new IllegalArgumentException("Initial balance must be positive");
         }
