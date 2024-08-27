@@ -3,18 +3,17 @@ package org.juneiskld.Banking.operation;
 import org.juneiskld.Banking.account.Account;
 import org.juneiskld.Banking.account.Transaction;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
+import java.util.concurrent.CompletableFuture;
 
 public class TransferOperation {
 
-    public static boolean execute(Account sender, Account recipient, double amount) {
+    private static final Logger logger = LoggerFactory.getLogger(TransferOperation.class)
 
-        if (WithdrawOperation.execute(sender, amount)) {
-            DepositOperation.execute(recipient, amount);
-            sender.addTransaction(new Transaction("Transfer to " + recipient.getAccountNumber(), -amount));
-            return true;
+    public static CompletableFuture<Boolean> execute(Account sender, Account recipient, BigDecimal amount) {
 
-        }
-        return false;
     }
 }
