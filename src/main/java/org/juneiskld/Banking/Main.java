@@ -56,7 +56,8 @@ public class Main {
                     withdraw(scanner, bank);
                     break;
                 case 4:
-
+                    checkBalance(scanner, bank);
+                    break;
                 case 5:
                     System.out.print("Enter sender account number: ");
                     String senderAccNum = scanner.nextLine();
