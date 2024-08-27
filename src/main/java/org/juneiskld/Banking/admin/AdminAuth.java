@@ -10,6 +10,13 @@ public class AdminAuth {
         return BCrypt.checkpw(password, STORED_HASHED_PASSWORD);
     }
 
+    // simulated method to retrieve the hashed password from a secure storage
+    private static String getHashedAdminPassword() {
+
+        // this would normally retrieve the hashed password from a secure storage file like a config file
+        return "$2a$12$ZzKvTqyRtQxwWpBnFgYkYeOoJrGmLXhPbVlMqUuqzHcSfDlqzIiE";
+    }
+
 
 
 }
