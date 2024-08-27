@@ -50,13 +50,7 @@ public class Main {
                     createAccount(scanner, bank);
                     break;
                 case 2:
-                    System.out.print("Enter account number: ");
-                    String depositAccNum = scanner.nextLine();
-                    System.out.print("Enter amount to deposit: ");
-                    double depositAmount = scanner.nextDouble();
-                    bank.deposit(depositAccNum, depositAmount);
-                    System.out.println("Deposit successful.");
-                    break;
+
 
                 case 3:
                     System.out.print("Enter account number: ");
