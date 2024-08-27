@@ -65,20 +65,8 @@ public class Main {
                     viewTransactions(scanner, bank);
                     break;
                 case 7:
-                    System.out.print("Enter income: ");
-                    double income = scanner.nextDouble();
-                    budget.setIncome(income);
-                    System.out.println("Income set successful.");
-                    break;
 
                 case 8:
-                    System.out.print("Enter expense category: ");
-                    String category = scanner.nextLine();
-                    System.out.print("Enter expense amount: ");
-                    double expenseAmount = scanner.nextDouble();
-                    budget.addExpense(category, expenseAmount);
-                    System.out.println("Expense added successfully.");
-                    break;
 
                 case 9:
                     budget.displayBudget();
