@@ -21,7 +21,7 @@ public class AdminOperations {
 
             boolean keepRunning = true;
             while (keepRunning) {
-                displayMenu;
+                displayMenu();
 
                 try {
                     int choice = Integer.parseInt(scanner.nextLine());
@@ -55,5 +55,31 @@ public class AdminOperations {
         }
     }
 
+    private static boolean authenticateAdmin(Scanner scanner) {
+        String password;
+        boolean authenticated = false;
 
+        while (!authenticated) {
+            System.out.print("Enter admin password: ");
+            password = scanner.nextLine();
+
+            if (AdminAuth.authenticate(password)) {
+                authenticated = true;
+                System.out.println("Authentication successful. Welcome admin!");
+
+            } else {
+                System.out.println("Incorrect password. Please try again.");
+            }
+        }
+        return authenticated;
+    }
+
+    private static void displayMenu() {
+        System.out.println("\nAdmin operations:");
+        System.out.println("1. View all Account Numbers");
+        System.out.println("2. Delete Account");
+        System.out.println("0. Back to Main Menu");
+
+        System.out.println("Choose an option: ");
+    }
 }
