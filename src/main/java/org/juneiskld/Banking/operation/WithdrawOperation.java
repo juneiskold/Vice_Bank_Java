@@ -3,15 +3,18 @@ package org.juneiskld.Banking.operation;
 import org.juneiskld.Banking.account.Account;
 import org.juneiskld.Banking.account.Transaction;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+
 public class WithdrawOperation {
 
-    public static boolean execute(Account account, double amount) {
+    private static final Logger logger = LoggerFactory.getLogger(WithdrawOperation.class);
 
-        if (account.getBalance() >= amount) {
-            account.setBalance(account.getBalance() - amount);
-            account.addTransaction(new Transaction("Withdrawal", -amount));
-            return true;
-        }
-        return false;
+    public static CompletableFuture<Boolean> execute(Account account, BigDecimal amount) {
+
     }
 }
