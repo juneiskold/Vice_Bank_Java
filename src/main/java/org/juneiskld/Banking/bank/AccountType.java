@@ -16,4 +16,17 @@ public enum AccountType implements AccountInterestRateCalculator {
         this.currency = currency;
         this.interestRate = interestRate;
     }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    @Override
+    public String toString() {
+        return name().toLowerCase();
+    }
 }
