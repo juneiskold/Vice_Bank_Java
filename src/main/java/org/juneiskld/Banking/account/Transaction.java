@@ -14,7 +14,11 @@ public class Transaction {
     private BigDecimal amount;
     private Currency currency;
 
-    public Transaction(String description, double amount) {
+    public Transaction(String description, BigDecimal amount) {
+
+        if  (description == null || description.isEmpty()) {
+            throw new IllegalArgumentException("Description cannot be null or empty");
+        }
 
         this.timestamp = LocalDateTime.now();
         this.description = description;
