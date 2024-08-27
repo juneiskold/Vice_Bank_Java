@@ -23,6 +23,11 @@ public class Transaction {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Amount must be greater than zero");
         }
+
+        if (currency == null) {
+            throw new IllegalArgumentException("Currency cannot be null");
+        }
+
         this.timestamp = LocalDateTime.now();
         this.description = description;
         this.amount = amount;
