@@ -11,12 +11,17 @@ public class AdminOperations {
         boolean authenticated = false;
         String password;
 
-        System.out.print("Enter admin password: ");
-        String password = scanner.nextLine();
+        while (!authenticated) {
+            System.out.print("Enter admin password: ");
+            password = scanner.nextLine();
 
-        if (!AdminAuth.authenticate(password)) {
-            System.out.println("Incorrect password. Access denied.");
-            return;
+            if (AdminAuth.authenticate(password)) {
+                authenticated = true;
+                System.out.println("Authentication successful. Welcome, admin!");
+
+            } else {
+                System.out.println("Incorrect password. Try again.");
+            }
         }
 
         while (true) {
@@ -25,24 +30,33 @@ public class AdminOperations {
             System.out.println("1. View all Account Numbers");
             System.out.println("2. Delete Account");
             System.out.println("0. Back to Main Menu");
+
             System.out.print("`Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                int choice = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (choice) {
-                case 1:
-                    ViewAccountsOperation.execute(bank);
-                    break;
+                switch (choice) {
 
-                case 2:
-                    DeleteAccountOperation.execute(scanner, bank);
-                    break;
+                    case 1:
+                        ViewAccountsOperation.execute(bank);
+                        break;
 
-                case 0:
-                    return;
-                default:
-                    System.out.println("Invalid option. Please try again.");
+                    case 2:
+                        DeleteAccountOperation.execute(scanner, bank);
+                        break;
+
+                    case 0:
+                        System.out.println("Returning to Main Menu...");
+                        return;
+
+                    default:
+                        System.out.println("Invalid option. Please try again.");
+                }
+
+            } catch (Exception e) {
+                System.err.println("An unexpected error occurred: " + e.getMessage());
             }
         }
     }
