@@ -24,6 +24,10 @@ public class Account {
             throw new IllegalArgumentException("Owner name cannot be null or empty");
         }
 
+        if (initialBalance == null || initialBalance.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Initial balance must be a positive");
+        }
+
         if (initialBalance <= 0) {
             throw new IllegalArgumentException("Initial balance must be positive");
         }
