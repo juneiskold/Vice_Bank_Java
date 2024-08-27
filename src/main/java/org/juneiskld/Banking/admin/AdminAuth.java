@@ -26,4 +26,12 @@ public class AdminAuth {
         }
         return sb.toString();
     }
+
+    // method to retrieve the hashed password from a secure storage (config file)
+    private static String getHashedAdminPassword() {
+
+        // implement retrieval logic from secure storage
+        return HASHED_ADMIN_PASSWORD;
+    }
+
 }
