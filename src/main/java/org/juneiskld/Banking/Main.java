@@ -6,18 +6,29 @@ import org.juneiskld.Banking.bank.Bank;
 import org.juneiskld.Banking.budget.Budget;
 import org.juneiskld.Banking.admin.AdminOperations;
 
-import java.text.DecimalFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+
+
+import java.text.DecimalFormat;
 
 public class Main {
+
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         Bank bank = new Bank();
-        Budget budget = new Budget();
+        Budget budget = new Budget(BigDecimal.ZERO);
 
-        while (true) {
+        Boolean running = true;
+
+        while (running) {
             System.out.println("Welcome to Vice Bank");
             System.out.println("\n1. Create Account");
             System.out.println("2. Deposit");
@@ -32,18 +43,10 @@ public class Main {
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = validateNumericInput(scanner);
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter owner name: ");
-                    String ownerName = scanner.nextLine();
-                    System.out.print("Enter initial balance: ");
-                    double initialBalance = scanner.nextDouble();
-                    Account newAccount = bank.createAccount(ownerName, initialBalance);
-                    System.out.println("Account created. Account number: " + newAccount.getAccountNumber());
-                    break;
 
                 case 2:
                     System.out.print("Enter account number: ");
