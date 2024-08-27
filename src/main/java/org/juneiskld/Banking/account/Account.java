@@ -36,7 +36,8 @@ public class Account {
     }
 
     public List<Transaction> getTransactions() {
-        return new ArrayList<>(transactions);
+//        return new ArrayList<>(transactions);
+        return transactions;
     }
 
     public void addTransaction(Transaction transaction) {
