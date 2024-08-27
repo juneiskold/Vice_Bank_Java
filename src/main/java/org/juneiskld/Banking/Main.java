@@ -62,7 +62,8 @@ public class Main {
                     transferMoney(scanner, bank);
                     break;
                 case 6:
-
+                    viewTransactions(scanner, bank);
+                    break;
                 case 7:
                     System.out.print("Enter income: ");
                     double income = scanner.nextDouble();
