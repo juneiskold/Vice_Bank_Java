@@ -8,6 +8,8 @@ import java.util.List;
 public class AdminOperations {
 
     public static void performAdminOperations(Scanner scanner, Bank bank) {
+        boolean authenticated = false;
+        String password;
 
         System.out.print("Enter admin password: ");
         String password = scanner.nextLine();
