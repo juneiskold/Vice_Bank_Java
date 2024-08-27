@@ -7,12 +7,12 @@ import java.util.Collections;
 
 public class Account {
 
-    private String accountNumber;
-    private String ownerName;
+    private final String accountNumber;
+    private final String ownerName;
 
-    private double balance;
+    private BigDecimal balance;
 
-    private List<Transaction> transactions;
+    private final List<Transaction> transactions;
 
     public Account(String accountNumber, String ownerName, double initialBalance) {
 
