@@ -62,20 +62,6 @@ public class Main {
                     transferMoney(scanner, bank);
                     break;
                 case 6:
-                    System.out.print("Enter account number: ");
-                    String transactionAccNum = scanner.nextLine();
-                    Account account = bank.getAccount(transactionAccNum);
-
-                    if (account != null) {
-                        for (Transaction t : account.getTransactions()) {
-                            System.out.println(t);
-
-                        }
-
-                    } else {
-                        System.out.println("Account not found");
-                    }
-                    break;
 
                 case 7:
                     System.out.print("Enter income: ");
