@@ -14,7 +14,7 @@ public class Transaction {
     private BigDecimal amount;
     private Currency currency;
 
-    public Transaction(String description, BigDecimal amount) {
+    public Transaction(String description, BigDecimal amount, Currency currency) {
 
         if  (description == null || description.isEmpty()) {
             throw new IllegalArgumentException("Description cannot be null or empty");
@@ -31,6 +31,7 @@ public class Transaction {
         this.timestamp = LocalDateTime.now();
         this.description = description;
         this.amount = amount;
+        this.currency = currency;
     }
 
     @Override
