@@ -56,18 +56,6 @@ public class Main {
                     withdraw(scanner, bank);
                     break;
                 case 4:
-                    System.out.print("Enter account number: ");
-                    String balanceAccNum = scanner.nextLine();
-                    double balance = bank.getBalance(balanceAccNum);
-
-                    if (balance >= 0) {
-                        System.out.printf("Balance: R%s\n", formatNumber(balance));
-
-                    } else {
-                        System.out.println("Account not found");
-
-                    }
-                    break;
 
                 case 5:
                     System.out.print("Enter sender account number: ");
