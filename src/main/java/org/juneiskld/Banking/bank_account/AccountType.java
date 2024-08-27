@@ -1,4 +1,5 @@
 package org.juneiskld.Banking.bank_account;
 
-public class AccountType {
+public enum AccountType {
+    SAVINGS, CHECKING, FIXED_DEPOSIT
 }
