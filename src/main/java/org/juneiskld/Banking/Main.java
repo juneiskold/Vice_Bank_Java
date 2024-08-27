@@ -59,20 +59,6 @@ public class Main {
                     checkBalance(scanner, bank);
                     break;
                 case 5:
-                    System.out.print("Enter sender account number: ");
-                    String senderAccNum = scanner.nextLine();
-                    System.out.print("Enter recipient account number: ");
-                    String recipientAccNum = scanner.nextLine();
-                    System.out.print("Enter transfer amount: ");
-                    double transferAmount = scanner.nextDouble();
-
-                    if (bank.transfer(senderAccNum, recipientAccNum, transferAmount)) {
-                        System.out.println("Transfer successful.");
-
-                    } else {
-                        System.out.println("Transfer failed. Check account numbers and balance.");
-                    }
-                    break;
 
                 case 6:
                     System.out.print("Enter account number: ");
