@@ -8,6 +8,8 @@ import org.juneiskld.Banking.operation.WithdrawOperation;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Bank {
 
@@ -67,5 +69,19 @@ public class Bank {
             return BalanceOperation.execute(account);
         }
         return -1;
+    }
+
+    public List<String> getAllAccountNumbers() {
+
+        return new ArrayList<>(accounts.keySet());
+    }
+
+    public boolean deleteAccount(String accountNumber) {
+
+        if (accounts.containsKey(accountNumber)) {
+            accounts.remove(accountNumber);
+            return true;
+
+        } return false;
     }
 }
