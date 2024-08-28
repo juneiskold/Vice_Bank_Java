@@ -1,4 +1,4 @@
-package org.juneiskld.Banking.bank_account;
+package org.juneiskld.Banking.banking.accounts;
 
 public class Account {
 
