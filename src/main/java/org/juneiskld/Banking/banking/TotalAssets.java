@@ -1,4 +1,4 @@
-package org.juneiskld.Banking.bank;
+package org.juneiskld.Banking.banking;
 
 public class TotalAssets {
     private double totalAssets;

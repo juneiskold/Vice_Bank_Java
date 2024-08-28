@@ -1,7 +1,4 @@
-package org.juneiskld.Banking.bank;
-
-import org.juneiskld.Banking.bank_account.BranchCode;
-import org.juneiskld.Banking.bank_account.InterestRate;
+package org.juneiskld.Banking.banking;
 
 public class Bank {
 

@@ -1,4 +1,4 @@
-package org.juneiskld.Banking.bank;
+package org.juneiskld.Banking.banking;
 import java.util.ArrayList;
 import java.util.List;
 
