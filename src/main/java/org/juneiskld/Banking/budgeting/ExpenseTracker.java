@@ -25,4 +25,15 @@ public class ExpenseTracker {
                 .mapToDouble(Expense::getAmount)
                 .sum();
     }
+
+    private static class Expense {
+
+        private String category;
+        private double amount;
+
+        public Expense(String category, double amount) {
+            this.category = category;
+            this.amount = amount;
+        }
+    }
 }
