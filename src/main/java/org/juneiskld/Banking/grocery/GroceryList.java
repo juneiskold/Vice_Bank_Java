@@ -20,7 +20,19 @@ public class GroceryList {
     }
 
     public List<GroceryItem> getItems() {
-        return items;
+        return new ArrayList<>(items);
+    }
+
+    public double getTotalCost() {
+        return items.stream().mapToDouble(GroceryItem::getTotalPrice).sum();
+    }
+
+    public void clear() {
+        items.clear();
+    }
+
+    public int getItemCount() {
+        return items.size();
     }
 
 }
