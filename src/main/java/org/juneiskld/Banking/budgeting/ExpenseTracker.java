@@ -19,5 +19,10 @@ public class ExpenseTracker {
         return expenses.stream().mapToDouble(Expense::getAmount).sum();
     }
 
-
+    public double getCategoryExpenses(String category) {
+        return expenses.stream()
+                .filter(e -> e.getCategory().equals(category))
+                .mapToDouble(Expense::getAmount)
+                .sum();
+    }
 }
