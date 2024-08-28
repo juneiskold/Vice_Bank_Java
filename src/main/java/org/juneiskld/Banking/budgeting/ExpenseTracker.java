@@ -10,4 +10,14 @@ public class ExpenseTracker {
     public ExpenseTracker() {
         this.expenses = new ArrayList<>();
     }
+
+    public void addExpense(String category, double amount) {
+        expenses.add(new Expense(category, amount));
+    }
+
+    public double getTotalExpenses() {
+        return expenses.stream().mapToDouble(Expense::getAmount).sum();
+    }
+
+
 }
