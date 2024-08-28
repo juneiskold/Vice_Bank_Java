@@ -22,5 +22,12 @@ public class Budget {
         return categoryBudgets.getOrDefault(category, 0.0);
     }
 
+    public double getTotalBudget() {
+        return totalBudget;
+    }
+
+    public void setTotalBudget(double totalBudget) {
+        this.totalBudget = totalBudget;
+    }
 
 }
