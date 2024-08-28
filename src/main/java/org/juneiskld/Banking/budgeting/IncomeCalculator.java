@@ -8,7 +8,7 @@ public class IncomeCalculator {
     private List<Income> incomes;
 
     public IncomeCalculator() {
-        this.incomes = new ArrayList<>()
+        this.incomes = new ArrayList<>();
     }
 
     public void addIncome(String source, double amount) {
