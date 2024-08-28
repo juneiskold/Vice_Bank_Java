@@ -35,5 +35,13 @@ public class ExpenseTracker {
             this.category = category;
             this.amount = amount;
         }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public double getAmount() {
+            return amount;
+        }
     }
 }
