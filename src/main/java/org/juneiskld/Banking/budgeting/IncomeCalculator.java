@@ -14,4 +14,17 @@ public class IncomeCalculator {
     public void addIncome(String source, double amount) {
         incomes.add(new Income(source, amount));
     }
+
+    public double getTotalIncome() {
+        return incomes.stream().mapToDouble(Income::getAmount).sum();
+    }
+
+    public double getIncomeBySource(String source) {
+        return incomes.stream()
+                .filter(i -> i.getSource().equals(source))
+                .mapToDouble(Income::getAmount)
+                .sum();
+    }
+
+
 }
