@@ -12,4 +12,9 @@ public class Budget {
         this.totalBudget = totalBudget;
         this.categoryBudgets = new HashMap<>();
     }
+
+    public void setCategoryBudget(String category, double amount) {
+
+        categoryBudgets.put(category, amount);
+    }
 }
