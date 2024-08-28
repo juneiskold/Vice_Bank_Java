@@ -35,4 +35,11 @@ public class GroceryList {
         return items.size();
     }
 
+    public GroceryItem findItemByName(String name) {
+        return items.stream()
+                .filter(item -> item.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
+
 }
