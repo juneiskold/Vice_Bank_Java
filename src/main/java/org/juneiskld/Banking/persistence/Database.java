@@ -34,4 +34,16 @@ public class Database {
         }
         return results;
     }
+
+    public int executeUpdate(String sql, Object... params) throws SQLException {
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            for (int i = 0; i < params.length; i++) {
+                pstmt.setObject(i + 1, params[i]);
+            }
+
+            return pstmt.executeUpdate();
+        }
+    }
 }
