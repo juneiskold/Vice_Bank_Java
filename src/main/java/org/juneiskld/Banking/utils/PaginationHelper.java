@@ -3,36 +3,42 @@ package org.juneiskld.Banking.utils;
 import java.util.List;
 
 public class PaginationHelper<T> {
-
     private final List<T> items;
-    private final int pageSize;
-    private int currentPage;
+    private final int itemsPerPage;
 
-    public PaginationHelper(List<T> items, int pageSize) {
+    public PaginationHelper(List<T> items, int itemsPerPage) {
         this.items = items;
-        this.pageSize = pageSize;
-        this.currentPage = 1;
+        this.itemsPerPage = itemsPerPage;
     }
 
-    public int getTotalPages() {
-        return (int) Math.ceil((double) items.size() / pageSize);
+    public int pageCount() {
+        return (int) Math.ceil((double) items.size() / itemsPerPage);
     }
 
-    public int getPageStart() {
-        return (currentPage - 1) * pageSize;
+    public int itemCount() {
+        return items.size();
     }
 
-    public int getPageEnd() {
-        return Math.min(currentPage * pageSize, items.size());
-    }
-
-    public void setPage(int page) {
-        if (page >= 1 && page <= getTotalPages()) {
-            this.currentPage = page;
+    public int pageItemCount(int pageIndex) {
+        if (pageIndex < 0 || pageIndex >= pageCount()) {
+            return -1;
         }
+        return pageIndex < pageCount() - 1 ? itemsPerPage : items.size() % itemsPerPage;
     }
 
-    public int getCurrentPage() {
-        return currentPage;
+    public int pageIndex(int itemIndex) {
+        if (itemIndex < 0 || itemIndex >= items.size()) {
+            return -1;
+        }
+        return itemIndex / itemsPerPage;
+    }
+
+    public List<T> getPage(int pageIndex) {
+        if (pageIndex < 0 || pageIndex >= pageCount()) {
+            throw new IllegalArgumentException("Invalid page index");
+        }
+        int start = pageIndex * itemsPerPage;
+        int end = Math.min(start + itemsPerPage, items.size());
+        return items.subList(start, end);
     }
 }
