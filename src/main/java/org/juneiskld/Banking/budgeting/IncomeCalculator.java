@@ -35,5 +35,13 @@ public class IncomeCalculator {
             this.source = source;
             this.amount = amount;
         }
+
+        public String getSource() {
+            return source;
+        }
+
+        public double getAmount() {
+            return amount;
+        }
     }
 }
