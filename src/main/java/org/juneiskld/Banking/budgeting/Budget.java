@@ -17,4 +17,10 @@ public class Budget {
 
         categoryBudgets.put(category, amount);
     }
+
+    public double getCategoryBudget(String category) {
+        return categoryBudgets.getOrDefault(category, 0.0);
+    }
+
+
 }
