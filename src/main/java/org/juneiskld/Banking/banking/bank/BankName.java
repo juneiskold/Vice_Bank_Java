@@ -1,4 +1,4 @@
-package org.juneiskld.Banking.banking;
+package org.juneiskld.Banking.banking.bank;
 
 public class BankName {
 
