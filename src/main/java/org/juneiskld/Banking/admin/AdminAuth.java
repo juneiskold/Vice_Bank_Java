@@ -6,6 +6,11 @@ public class AdminAuth {
     private String password;
 
     public AdminAuth(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
+    public boolean authenticate(String inputUsername, String inputPassword) {
+        return this.username.equals(inputUsername) && this.password.equals(inputPassword);
     }
 }
