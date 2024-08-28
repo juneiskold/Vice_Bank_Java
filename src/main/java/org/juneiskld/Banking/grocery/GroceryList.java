@@ -11,5 +11,16 @@ public class GroceryList {
         this.items = new ArrayList<>();
     }
 
+    public void addItem(GroceryItem item) {
+        items.add(item);
+    }
+
+    public void removeItem(GroceryItem item) {
+        items.remove(item);
+    }
+
+    public List<GroceryItem> getItems() {
+        return items;
+    }
 
 }
