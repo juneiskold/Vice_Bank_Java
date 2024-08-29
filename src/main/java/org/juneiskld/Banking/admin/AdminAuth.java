@@ -16,6 +16,14 @@ public class AdminAuth {
         this.saltedHashedPassword = hashPassword(password);
     }
 
+    private String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+        byte[] bytes = ("salt" + password).getBytes(StandardCharsets.UTF_8);
+        byte[] hashBytes = md.digest(bytes);
+        return Base64.getEncoder().encodeToString(hashBytes);
+    }
+
     public boolean authenticate(String inputUsername, String inputPassword) {
         return this.username.equals(inputUsername) && this.password.equals(inputPassword);
     }
