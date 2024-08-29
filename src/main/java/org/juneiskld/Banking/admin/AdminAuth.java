@@ -24,7 +24,13 @@ public class AdminAuth {
         return Base64.getEncoder().encodeToString(hashBytes);
     }
 
-    public boolean authenticate(String inputUsername, String inputPassword) {
-        return this.username.equals(inputUsername) && this.password.equals(inputPassword);
+    public boolean authenticate(String inputUsername, String inputPassword) throws NoSuchAlgorithmException {
+
+        if (!inputUsername.equals(this.username)) {
+            return false;
+        }
+
+        String inputHashedPassword = hashPassword(inputPassword);
+        return inputHashedPassword.equals(this.saltedHashedPassword);
     }
 }
