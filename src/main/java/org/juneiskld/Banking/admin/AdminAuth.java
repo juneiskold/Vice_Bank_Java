@@ -8,11 +8,12 @@ import java.util.Base64;
 public class AdminAuth {
 
     private String username;
-    private String password;
+    private String saltedHashedPassword;
 
-    public AdminAuth(String username, String password) {
+    public AdminAuth(String username, String password) throws NoSuchAlgorithmException {
+
         this.username = username;
-        this.password = password;
+        this.saltedHashedPassword = hashPassword(password);
     }
 
     public boolean authenticate(String inputUsername, String inputPassword) {
