@@ -1,5 +1,10 @@
 package org.juneiskld.Banking.admin;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
 public class AdminAuth {
 
     private String username;
